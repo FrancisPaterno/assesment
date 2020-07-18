@@ -1,0 +1,80 @@
+﻿@model Sample_Project_1.ViewModels.EmployeeFormViewModel
+@{
+    ViewBag.Title = "Employee - New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Employee</h2>
+
+@using (Html.BeginForm("Save", "Employee")) {
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Employee.Firstname, new { @class="col-md-2 col-form-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Employee.Firstname, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Employee.Firstname)
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Employee.MiddleInitial, new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Employee.MiddleInitial, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Employee.MiddleInitial)
+        </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Employee.Lastname, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Employee.Lastname, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.Lastname)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Employee.BasicSalary, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Employee.BasicSalary, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.BasicSalary)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Employee.Position, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Employee.Position, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.Position)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Employee.SSS, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Employee.SSS, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.SSS)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Employee.PhilHealth, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Employee.PhilHealth, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.PhilHealth)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Employee.EmployeeStatusStatus_id, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Employee.EmployeeStatusStatus_id, new SelectList(Model.EmployeeStatuses, "Status_id", "Status"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.EmployeeStatusStatus_id)
+            </div>
+        </div>
+
+        @Html.HiddenFor(m => m.Employee.Employee_Id)
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Save</button>
+        }
+
